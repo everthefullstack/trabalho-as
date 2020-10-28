@@ -7,5 +7,4 @@ public class ModelUsuario {
     private String cpf;
     private String telefone;
     private String foto;
-    
 }
