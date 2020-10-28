@@ -36,3 +36,19 @@ alter table tbproposta add constraint tbproposta_fkcodusuario foreign key(fkcodu
 alter table tbnegociacao add constraint tbnegociacao_pkcodnegociacao primary key(pkcodnegociacao);
 alter table tbnegociacao add constraint tbnegociacao_fkcodtbproposta1 foreign key(fkcodtbproposta1) references tbproposta(pkcodproposta);
 alter table tbnegociacao add constraint tbnegociacao_fkcodtbproposta2 foreign key(fkcodtbproposta2) references tbproposta(pkcodproposta);
+
+create sequence tbusuario_pk
+increment by 1
+start with 1;
+
+create sequence tblogin_pk
+increment by 1
+start with 1;
+
+create sequence tbnegociacao_pk
+increment by 1
+start with 1;
+
+create sequence tbproposta_pk
+increment by 1
+start with 1;

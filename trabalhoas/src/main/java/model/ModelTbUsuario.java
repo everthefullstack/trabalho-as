@@ -1,6 +1,6 @@
 package model;
 
-public class ModelUsuario {
+public class ModelTbUsuario {
 
     private int pkcodusuario;
     private String nome;
