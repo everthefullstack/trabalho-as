@@ -12,7 +12,8 @@ public class App {
         Map map = new HashMap();
         map.put("name", "Sam");
 
-        // hello.html file is in resources/templates directory
+        //DatabaseConnection database = new DatabaseConnection("localhost","1521", "xe", "trabalhoas", "trabalhoas");
+        //hello.html file is in resources/templates directory
         get("/hello", (req, res) -> new ModelAndView(map, "hello"), new ThymeleafTemplateEngine());
     }
 }
