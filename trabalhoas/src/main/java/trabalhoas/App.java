@@ -1,19 +1,23 @@
 package trabalhoas;
 
 import static spark.Spark.*;
-import spark.ModelAndView;
-import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import java.util.HashMap;
 import java.util.Map;
+import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 public class App {
     public static void main(String[] args) {
+        
+        Map<String, Object> model = new HashMap<>();
 
-        Map map = new HashMap();
-        map.put("name", "Sam");
-
+        staticFileLocation("/static");
+        path("/login", () -> {
+            get("/", (req, res) -> new ThymeleafTemplateEngine().render(modelAndView(model, "login")));
+            post("/login", (req, res) -> new ThymeleafTemplateEngine().render(modelAndView(model, "login")));
+        });
         //DatabaseConnection database = new DatabaseConnection("localhost","1521", "xe", "trabalhoas", "trabalhoas");
-        //hello.html file is in resources/templates directory
-        get("/hello", (req, res) -> new ModelAndView(map, "hello"), new ThymeleafTemplateEngine());
+        //http://localhost:4567/login
+        
+        
     }
 }

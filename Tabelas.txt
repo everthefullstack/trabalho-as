@@ -28,6 +28,24 @@ create table tbnegociacao(
     data_hora timestamp not null
 );
 
+create table tbproduto(
+    
+    pkcodproduto integer not null,
+    nome_produto varchar(50) not null,
+    descricao varchar(300) not null,
+    data_hora timestamp not null,
+    fkcodusuario integer not null
+);
+
+create table tbservico(
+    
+    pkcodservico integer not null,
+    nome_servico varchar(50) not null,
+    descricao varchar(300) not null,
+    data_hora timestamp not null,
+    fkcodusuario integer not null
+);
+
 alter table tbusuario add constraint tbusuario_pkcodusuario primary key(pkcodusuario);
 alter table tblogin add constraint tblogin_pkcodlogin primary key(pkcodlogin);
 alter table tblogin add constraint tblogin_fkcodusuario foreign key(fkcodusuario) references tbusuario(pkcodusuario);
@@ -36,6 +54,10 @@ alter table tbproposta add constraint tbproposta_fkcodusuario foreign key(fkcodu
 alter table tbnegociacao add constraint tbnegociacao_pkcodnegociacao primary key(pkcodnegociacao);
 alter table tbnegociacao add constraint tbnegociacao_fkcodtbproposta1 foreign key(fkcodtbproposta1) references tbproposta(pkcodproposta);
 alter table tbnegociacao add constraint tbnegociacao_fkcodtbproposta2 foreign key(fkcodtbproposta2) references tbproposta(pkcodproposta);
+alter table tbproduto add constraint tbproduto_pkcodproduto primary key(pkcodproduto);
+alter table tbservico add constraint tbservico_pkcodservico primary key(pkcodservico);
+alter table tbproduto add constraint tbproduto_fkcodusuario foreign key(fkcodusuario) references tbusuario(pkcodusuario);
+alter table tbservico add constraint tbservico_fkcodusuario foreign key(fkcodusuario) references tbusuario(pkcodusuario);
 
 create sequence tbusuario_pk
 increment by 1
@@ -50,5 +72,13 @@ increment by 1
 start with 1;
 
 create sequence tbproposta_pk
+increment by 1
+start with 1;
+
+create sequence tbproduto_pk
+increment by 1
+start with 1;
+
+create sequence tbservico_pk
 increment by 1
 start with 1;
