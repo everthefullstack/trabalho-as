@@ -1,42 +1,34 @@
 package core;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.sql.*;
 
 public class DatabaseConnection {
 
-    private String server;
-    private String port;
-    private String database;
-    private String user;
-    private String password;
+    private Properties getProps() throws IOException {
 
-    public DatabaseConnection(String server, String port, String database, String user, String password) {
-        this.server = server;
-        this.port = port;
-        this.database = database;
-        this.user = user;
-        this.password = password;
+      Properties props = new Properties();
+      FileInputStream file = new FileInputStream("trabalhoas\\src\\main\\java\\core\\Database.properties");
+      props.load(file);
+      return props;
+    
     }
 
-    // Retorna a função que executa os comandos SQL
-    // Exemplo: String sql = "select 'teste' from DUAL"
-    // executor = DatabaseConnection().Executor()
-    // executor.executeQuery(sql)
-    public Statement Executor() {
-
-        String url = "jdbc:oracle:thin:@" + server + ":" + port + ":" + database;      
-
-        Connection conn;
+    public Statement Executor() throws IOException, SQLException {
         
-		try {
+      Properties prop = getProps();
+      
+      String server = prop.getProperty("prop.server");
+      String port = prop.getProperty("prop.port");
+      String database = prop.getProperty("prop.database");
+      String user = prop.getProperty("prop.user");
+      String password = prop.getProperty("prop.password");
+      String url = "jdbc:oracle:thin:@" + server + ":" + port + ":" + database;      
 
-            conn = DriverManager.getConnection(url, user, password);
-            return conn.createStatement();
-            
-		} catch (SQLException e) {
-			
-            e.printStackTrace();
-            return null;
-        }
+      Connection conn;
+      conn = DriverManager.getConnection(url, user, password);
+      return conn.createStatement();
     }
 }
