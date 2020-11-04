@@ -2,10 +2,10 @@ package model;
 
 import java.sql.Timestamp;
 
-public class ModelTbProposta {
-
-    private int pkcodproposta;
-    private String titulo;
+public class ModelTbServico {
+    
+    private int pkcodservico;
+    private String nomeServico;
     private String descricao;
     private Timestamp dataHora;
     private int fkcodusuario;
