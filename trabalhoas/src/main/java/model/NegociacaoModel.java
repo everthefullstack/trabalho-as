@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Timestamp;
 
-public class ModelTbNegociacao {
+public class NegociacaoModel {
 
     private int pkcodnegociacao;
     private int fkcodtbproposta1;

@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Timestamp;
 
-public class ModelTbProposta {
+public class PropostaModel {
 
     private int pkcodproposta;
     private String titulo;

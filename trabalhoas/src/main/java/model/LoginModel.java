@@ -1,6 +1,6 @@
 package model;
 
-public class ModelTbLogin {
+public class LoginModel {
 
     private int pkcodlogin;
     private String login;
