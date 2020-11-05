@@ -6,4 +6,5 @@ public class LoginModel {
     private String login;
     private String senha;
     private int fkcodusuario;
+    private String id;
 }
