@@ -7,11 +7,17 @@ import spark.Request;
 import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
-public class ControllerIndex {
+public class IndexController {
     
     public static String getIndexPage(Request req, Response res) {
 
-        Map<String, Object> model = new HashMap<>();
-        return new ThymeleafTemplateEngine().render(modelAndView(model, "index"));
+        try{
+            Map<String, Object> model = new HashMap<>();
+            return new ThymeleafTemplateEngine().render(modelAndView(model, "index"));
+
+        }catch(Exception error){
+            
+            return error.toString();
+        }
     }
 }

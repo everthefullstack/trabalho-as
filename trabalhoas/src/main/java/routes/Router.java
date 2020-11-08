@@ -1,18 +1,19 @@
 package routes;
 
 import static spark.Spark.*;
-import controller.ControllerLogin;
-import controller.ControllerIndex;
+import controller.LoginController;
+import controller.IndexController;
 
 public class Router {
     
     public void getAllRoutes(){
 
         //Rotas da página de login
-        get("/", ControllerLogin::getLoginPage);
-        post("/", ControllerLogin::loginPage);
+        get("/", LoginController::getLoginPage);
+        post("/", LoginController::loginPage);
+        get("/logout", LoginController::logoutPage);
 
         //Rotas da página de index
-        get("/index", ControllerIndex::getIndexPage);
+        get("/index", IndexController::getIndexPage);
     }
 }
