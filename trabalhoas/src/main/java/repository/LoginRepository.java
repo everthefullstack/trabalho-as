@@ -3,7 +3,8 @@ package repository;
 import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
-import core.DatabaseConnection;
+
+import service.DatabaseConnection;
 
 public class LoginRepository {
 

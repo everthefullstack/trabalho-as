@@ -1,4 +1,4 @@
-package core;
+package service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class DatabaseConnection {
     private Properties getProps() throws IOException {
 
       Properties props = new Properties();
-      FileInputStream file = new FileInputStream("trabalhoas\\src\\main\\java\\core\\Database.properties");
+      FileInputStream file = new FileInputStream("trabalhoas\\src\\main\\java\\service\\Database.properties");
       props.load(file);
       return props;
     

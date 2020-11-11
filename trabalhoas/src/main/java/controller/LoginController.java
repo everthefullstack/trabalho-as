@@ -10,19 +10,30 @@ import spark.Request;
 import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import repository.LoginRepository;
+import service.IsLogged;
 
 public class LoginController {
 
     public static String getLoginPage(Request req, Response res) {
 
         try{
-            Map<String, Object> model = new HashMap<>();
-            return new ThymeleafTemplateEngine().render(modelAndView(model, "login"));
+            IsLogged isLogged = new IsLogged();
+            if(isLogged.isLogged(req.cookie("usuario")) == true){
 
+                res.redirect("/index");
+
+            } else {
+
+                Map<String, Object> model = new HashMap<>();
+                return new ThymeleafTemplateEngine().render(modelAndView(model, "login"));
+            }
+            
         }catch(Exception error){
 
             return error.toString();
         } 
+
+        return "";
     }
 
     public static String loginPage(Request req, Response res) throws SQLException, IOException {
@@ -46,12 +57,12 @@ public class LoginController {
                 res.redirect("/index");
             }
 
-            return "";
-
         } catch(Exception error){
 
             return error.toString();
         }
+
+        return "";
     }
 
     public static String logoutPage(Request req, Response res) throws SQLException, IOException {
@@ -60,11 +71,11 @@ public class LoginController {
             res.removeCookie("usuario");
             res.redirect("/");
 
-            return "";
-
         } catch(Exception error) {
 
             return error.toString();
         }
+
+        return "";
     }
 }
