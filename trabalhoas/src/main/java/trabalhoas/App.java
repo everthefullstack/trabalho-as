@@ -10,6 +10,6 @@ public class App {
         staticFileLocation("/static");
         new Router().getAllRoutes();
                     
-        //http://localhost:4567/login
+        //http://localhost:4567
     }
 }

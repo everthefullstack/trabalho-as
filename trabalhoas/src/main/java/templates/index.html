@@ -1,11 +1,125 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
-<body>
-    <h1>Bem vindo ao site ${loginInfo}</h1>
-</body>
-</html>
+
+	<html lang="pt-br">
+		
+		<head>
+			<!-- DECLARAÇÕES DO BOOTSTRAP -->
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="css/index.css">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+			<!-- TITULO DA PAGINA -->
+			<title>Index</title>
+		</head>
+		
+		<body> 
+						
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				
+				<nav class="navbar navbar-light bg-light">
+					<a class="navbar-brand" href="">
+						<img src="img\logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+					</a>
+				</nav>
+				
+				<a class="navbar-brand" href="http://localhost:4567/index"> BRIQUE DA GURIZADA </a>
+				
+				<!-- VERIFICAR ----------------------------------------- 
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"> </span>
+					</button>
+				-------------------------------------------------------->
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						
+						<!-- EXEMPLO DE ITEM ACTIVE ---------------------- 
+							<li class="nav-item active">
+								<a class="nav-link" href="#"> Meu perfil 
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+						------------------------------------------------->
+						
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.google.com/"> Meu perfil </a>
+						</li>
+												
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.google.com/"> Procurar </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.google.com/"> Anunciar </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.google.com/"> Ofertas recebidas </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.google.com/"> Minhas propostas </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/sobre"> Sobre o projeto </a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/logout"><strong>Logout</strong></a>
+						</li>
+						
+						<!-- EXEMPLO DE DROPDWNS -------------------------
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown de opções </a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="#"> Opção 1 </a>
+										<a class="dropdown-item" href="#"> Opção 2 </a>
+										<div class="dropdown-divider"> </div>
+										<a class="dropdown-item" href="#"> Opção 3 </a>
+									</div>
+							</li>
+						------------------------------------------------->
+						
+						<!-- EXEMPLO DE ITEM DESABILITADO PARA USUARIO 
+							<li class="nav-item">
+								<a class="nav-link disabled" href="https://www.google.com/" tabindex="-1" aria-disabled="true"> Desativado </a>
+							</li>
+						------------------------------------------------->
+						
+					</ul>
+					
+					<!-- EXEMPLO DE BOTÃO DE PESQUISA 
+						<form class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2" type="search" placeholder="Digite..." aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Pesquisar </button>
+						</form>
+					------------------------------------------------->
+					
+				</div>
+			</nav>
+			
+									
+			<div class="container">		
+				
+				<form>
+				
+					<p><h4> PRINCÍPIOS DA PLATAFORMA </h4></p>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 01 </span><small id="observacao1" class="form-text text-muted"> Aplicação criada exclusivamente para troca de produtos ou serviços. </small></div>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 02 </span><small id="observacao1" class="form-text text-muted"> Ideologia de ajuda mútua nesse período de pandemia.                 </small></div>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 03 </span><small id="observacao1" class="form-text text-muted"> As trocas não podem conter cunho monetário.                         </small></div>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 04 </span><small id="observacao1" class="form-text text-muted"> As trocas não podem conter cunho sexual.                            </small></div>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 05 </span><small id="observacao1" class="form-text text-muted"> As trocas não podem conter cunho politico.                          </small></div>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 06 </span><small id="observacao1" class="form-text text-muted"> As trocas não podem conter cunho ilícito.                           </small></div>
+					<div class="form-group"> <span class="badge badge-secondary"> PRINCÍPIO 07 </span><small id="observacao1" class="form-text text-muted"> As trocas não podem conter cunho religioso.                         </small></div>
+				
+				</form>	
+				
+			</div>
+		
+		</body>
+		
+	</html>

@@ -2,6 +2,8 @@ package routes;
 
 import static spark.Spark.*;
 import controller.LoginController;
+import controller.SobreController;
+import controller.CadastroController;
 import controller.IndexController;
 
 public class Router {
@@ -15,5 +17,11 @@ public class Router {
 
         //Rotas da página de index
         get("/index", IndexController::getIndexPage);
+
+        //Rotas da página de cadastro
+        get("/cadastro", CadastroController::getCadastroPage);
+
+        //Rotas da página de sobre
+        get("/sobre", SobreController::getSobrePage);
     }
 }
