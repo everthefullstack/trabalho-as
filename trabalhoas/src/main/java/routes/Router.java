@@ -13,6 +13,8 @@ public class Router {
         //Rotas da página de login
         get("/", LoginController::getLoginPage);
         post("/", LoginController::loginPage);
+
+        //Rotas de logout
         get("/logout", LoginController::logoutPage);
 
         //Rotas da página de index
@@ -20,6 +22,7 @@ public class Router {
 
         //Rotas da página de cadastro
         get("/cadastro", CadastroController::getCadastroPage);
+        post("/cadastro", CadastroController::createCadastro);
 
         //Rotas da página de sobre
         get("/sobre", SobreController::getSobrePage);

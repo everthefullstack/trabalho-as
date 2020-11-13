@@ -4,7 +4,6 @@ import static spark.Spark.*;
 import routes.Router;
 
 public class App {
-
     public static void main(String[] args) {
         
         staticFileLocation("/static");

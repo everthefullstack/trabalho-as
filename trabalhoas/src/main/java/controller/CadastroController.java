@@ -19,4 +19,22 @@ public class CadastroController {
             return error.toString();
         } 
     }
+
+    public static String createCadastro(Request req, Response res){
+
+        try{
+            HashMap<String, String> cadastroInfo = new HashMap<>();
+            cadastroInfo.put("nome", req.queryParams("login"));
+            cadastroInfo.put("cpf", req.queryParams("senha"));
+            cadastroInfo.put("telefone", req.queryParams("telefone"));
+            cadastroInfo.put("login", req.queryParams("login"));
+            cadastroInfo.put("senha", req.queryParams("senha"));
+
+        } catch(Exception error){
+
+            return error.toString();
+        }
+
+        return "";        
+    }
 }
