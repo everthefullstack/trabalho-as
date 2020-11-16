@@ -58,7 +58,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="telefone">CPF</label>
+							<label for="telefone">Telefone</label>
 							<input type="text" class="form-control" id="telefone" name="telefone" placeholder="Informe seu telefone (Somente números)" required>
 						</div>
 						
@@ -71,15 +71,7 @@
 							<label for="senha">Senha</label>
 							<input type="password" class="form-control" id="senha" name="senha" placeholder="Cadastre uma senha" required>
 						</div>
-						
-						<div class="form-group">
-							<label for="fotoPerfil">Foto de perfil</label>	
-							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="inputGroupFile01" required>
-								<label class="custom-file-label" for="inputGroupFile01">Carregue uma foto para seu perfil</label>
-							</div>	
-						</div>
-						
+									
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block rounded mx-auto d-block">Confirmar cadastro</button>
 							<small id="notificacaoCadastro" class="form-text text-muted text-center">Certifique-se que os dados inseridos estão corretos antes de confirmar o cadastro!</small>
@@ -90,21 +82,8 @@
 
 				</div>
 				<!-- container form login-->
-
 			</div>
-				
-			<!--Script para aparecer o nome do que está sendo importado-->
-			<script>
-				$(".custom-file-input").on("change", function () {
-					var fileName = $(this).val().split("\\").pop();
-					$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-				});
-			</script>
-			
+						
 		</body>
 	
 	</html>
-	
-	
-	
-	

@@ -7,7 +7,7 @@ import service.DatabaseConnection;
 public class ServiceRepository {
 
     public Boolean verifyLogin(String id) throws SQLException, IOException {
-
+      
         String res = "";
 
         DatabaseConnection db = new DatabaseConnection();

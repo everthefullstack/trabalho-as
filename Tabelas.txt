@@ -1,7 +1,7 @@
 create table tbusuario(
   pkcodusuario integer not null,
   nome varchar2(50) not null,
-  cpf varchar2(11) not null,
+  cpf varchar2(11) not null unique,
   telefone varchar2(11) not null,
   foto blob
 );
@@ -10,7 +10,7 @@ create table tblogin(
     pkcodlogin integer not null,
     login varchar2(50) not null,
     senha varchar2(50) not null,
-    id varchar2(50) not null,
+    id varchar2(50),
     fkcodusuario integer not null
 );
 
@@ -54,6 +54,3 @@ start with 1;
 create sequence tbproposta_pk
 increment by 1
 start with 1;
-
-insert into tbusuario (pkcodusuario, nome, cpf, telefone)values(TBUSUARIO_PK.nextval, 'giovani', '12345678910', '111111111')
-insert into tblogin values(TBLOGIN_PK.nextval, 'giovani', 'giovani', '0', 1)
