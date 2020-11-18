@@ -1,4 +1,4 @@
-						
+
 	<!DOCTYPE html>
 
 	<html lang="pt-br">
@@ -7,12 +7,12 @@
 			<!-- DECLARAÇÕES DO BOOTSTRAP -->
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link rel="stylesheet" href="css/sobre.css">
+			<link rel="stylesheet" href="css/index.css">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 			<!-- TITULO DA PAGINA -->
-			<title>Sobre</title>
+			<title>Propostas recebidas</title>
 		</head>
 		
 		<body> 
@@ -26,7 +26,7 @@
 				</nav>
 				
 				<a class="navbar-brand" href="http://localhost:4567/index"> BRIQUE DA GURIZADA </a>
-
+				
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						
@@ -57,27 +57,77 @@
 						<li class="nav-item">
 							<a class="nav-link" href="http://localhost:4567/logout"><strong>Logout</strong></a>
 						</li>
-						
+												
 					</ul>
-					
+	
 				</div>
+				
 			</nav>
-							
-			<div class="container">		
+			
+			<!--Container titulo-->
+			<div class="container mt-4">
 				
-				<form>
+				<h4>PROPOSTAS RECEBIDAS</h4>
+				<div class="form-group"> 
+					<small id="observacao1" class="form-text text-muted">Listagem atualizada.</small>
+				</div>
 				
-					<p><h4> SOBRE O PROJETO </h4></p>
-					<div class="form-group"> <span class="badge badge-secondary"> RECURSOS              </span><small id="observacao1" class="form-text text-muted"> Framework Spark, Oracle XE, Github, Trello               </small></div>
-					<div class="form-group"> <span class="badge badge-secondary"> GRUPO DESENVOLVEDOR   </span><small id="observacao2" class="form-text text-muted"> Charles Lemos, Giovani Lima, Antonio Rolim, Alex Córdova </small></div>
-					<div class="form-group"> <span class="badge badge-secondary"> DISCIPLINA ACADEMICA  </span><small id="observacao3" class="form-text text-muted"> Programação orientada a objetos                          </small></div>
-					<div class="form-group"> <span class="badge badge-secondary"> INSTITUIÇÃO DE ENSINO </span><small id="observacao4" class="form-text text-muted"> Universidade Lutera do Brasil ULBRA                      </small></div>
-					<div class="form-group"> <span class="badge badge-secondary"> ENTREGA DO PROJETO    </span><small id="observacao5" class="form-text text-muted"> 03 de Dezembro de 2020                                   </small></div>
+			</div>	
 									
-				</form>	
-				
+			<!--Container listagem de minhas propostas-->
+			<div class="container">
+
+				<br><br>
+
+				<!--Inicio linha-->
+				<div class="row">
+
+					<!--Coluna usuários-->
+					<div class="col table-responsive">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Código</th>
+									<th scope="col">Anunciante</th>
+									<th scope="col">Tipo</th>
+									<th scope="col">Título da proposta</th>
+									<th scope="col">Detalhamento da proposta</th>
+									<th scope="col">Opção</th>
+								</tr>
+							</thead>
+							
+							
+							<tbody>
+								<tr>
+									<th scope="row"> pkcodproposta </th>
+									<td> pkcodusuario </td>
+									<td> Objeto/Serviço </td>
+									<td> titulo </td>
+									<td> descricao </td>
+									<td> <a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/editar_proposta">Visualizar oferta</a> </td>
+								</tr>
+							</tbody>
+							
+						</table>
+
+					</div>
+					<!--Fim coluna usuários-->
+
+				</div>
+				<!--Fim linha-->
+
 			</div>
-		
+			
+			<div class="container mt-4">
+				<p></p>
+					<div class="mt-3">
+						<a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/index">Voltar</a>
+					</div>
+				<p></p>
+			</div>
+			
 		</body>
 		
 	</html>
+	
