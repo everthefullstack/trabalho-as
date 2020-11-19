@@ -14,7 +14,7 @@ public class ServiceRepository {
         ResultSet result = db.Executor().executeQuery("SELECT" +
                                                         " ID" +
                                                       " FROM" +
-                                                        " TBLOGIN" +
+                                                        " TBUSUARIO" +
                                                       " WHERE" +
                                                         " ID = '" + id + "'");
         while(result.next()){

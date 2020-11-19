@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import model.UsuarioModel;
 import spark.Request;
 import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -40,11 +41,11 @@ public class LoginController {
 
         try{
             LoginRepository loginRep = new LoginRepository();
-            HashMap<String, String> loginInfo = new HashMap<>();
+            UsuarioModel loginInfo = new UsuarioModel();
             final String uuid = UUID.randomUUID().toString().replace("-", "");
-            loginInfo.put("login", req.queryParams("login"));
-            loginInfo.put("senha", req.queryParams("senha"));
-            loginInfo.put("id", uuid);
+            loginInfo.setLogin(req.queryParams("login").toString());
+            loginInfo.setSenha(req.queryParams("senha").toString());
+            loginInfo.setId(uuid.toString());
 
             int fkcodusuario = loginRep.doLogin(loginInfo);
 

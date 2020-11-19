@@ -2,6 +2,7 @@ package controller;
 
 import static spark.Spark.*;
 import java.util.HashMap;
+import model.UsuarioModel;
 import spark.Request;
 import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -26,12 +27,13 @@ public class CadastroController {
         try{
             Boolean cadastro = false;
             CadastroRepository cadRepository = new CadastroRepository();
-            HashMap<String, String> cadastroInfo = new HashMap<>();
-            cadastroInfo.put("nome", req.queryParams("nome"));
-            cadastroInfo.put("cpf", req.queryParams("cpf"));
-            cadastroInfo.put("telefone", req.queryParams("telefone"));
-            cadastroInfo.put("login", req.queryParams("login"));
-            cadastroInfo.put("senha", req.queryParams("senha"));
+
+            UsuarioModel cadastroInfo = new UsuarioModel();
+            cadastroInfo.setNome(req.queryParams("nome").toString());
+            cadastroInfo.setCpf(req.queryParams("cpf").toString());
+            cadastroInfo.setTelefone(req.queryParams("telefone").toString());
+            cadastroInfo.setLogin(req.queryParams("login").toString());
+            cadastroInfo.setSenha(req.queryParams("senha").toString());
 
             cadastro = cadRepository.insertCadastro(cadastroInfo);
 

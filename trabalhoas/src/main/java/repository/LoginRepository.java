@@ -2,32 +2,31 @@ package repository;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.HashMap;
-
+import model.UsuarioModel;
 import service.DatabaseConnection;
 
 public class LoginRepository {
 
-    public int doLogin(HashMap loginInfo) throws SQLException, IOException {
+    public int doLogin(UsuarioModel loginInfo) throws SQLException, IOException {
 
-        int fkcodusuario = 0;
+        int pkcodusuario = 0;
 
           DatabaseConnection db = new DatabaseConnection();
           ResultSet result = db.Executor().executeQuery("SELECT" +
-                                                          " FKCODUSUARIO" +
+                                                          " PKCODUSUARIO" +
                                                         " FROM" + 
-                                                          " TBLOGIN" +
+                                                          " TBUSUARIO" +
                                                         " WHERE" + 
-                                                          " LOGIN = '" + loginInfo.get("login") + "'" +
+                                                          " LOGIN = '" + loginInfo.getLogin() + "'" +
                                                         " AND"+
-                                                          " SENHA = '" + loginInfo.get("senha") + "'"); 
+                                                          " SENHA = '" + loginInfo.getSenha() + "'"); 
           while(result.next()){
-              fkcodusuario = result.getInt("fkcodusuario");
-              if(fkcodusuario > 0){
-                db.Executor().executeQuery("UPDATE TBLOGIN SET ID ='" + loginInfo.get("id") + "' WHERE fkcodusuario = " + fkcodusuario);
+            pkcodusuario = result.getInt("pkcodusuario");
+              if(pkcodusuario > 0){
+                db.Executor().executeQuery("UPDATE TBUSUARIO SET ID ='" + loginInfo.getId() + "' WHERE pkcodusuario = " + pkcodusuario);
               }
           }
 
-      return fkcodusuario;
+      return pkcodusuario;
     }
 }

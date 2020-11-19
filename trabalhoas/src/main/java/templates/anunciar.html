@@ -76,24 +76,22 @@
 						<small id="novoAnuncio" class="form-text text-muted">Informe os dados para seu novo anúncio.</small>
 					</div>
 					
-					<p></p>	
-					
 					<div class="form-group">
 					  <label for="tituloAnuncio">Título</label>
-					  <input type="text" class="form-control" id="tituloAnuncio" name="tituloAnuncio" placeholder="Informe um título para o anúncio" required>
+					  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Informe um título para o anúncio" required>
 					</div>
 					
 					<div class="form-group">
 						<label for="tipoAnuncio">Tipo de anúncio</label>
-						<select class="custom-select" name="tipoAnuncio">
-							<option>Serviço</option>
-							<option>Produto</option>
+						<select class="custom-select" name="tipo">
+							<option value="0">Serviço</option>
+							<option value="1">Produto</option>
 						</select>
 					</div>
 						
 					<div class="form-group">
 						<label for="descricaoAnuncio">Descrição do anúncio</label>
-						<textarea class="form-control" id="descricaoAnuncio" rows="5" placeholder="Datalhe as condições do anúncio" required></textarea>
+						<textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Detalhe as condições do anúncio" required></textarea>
 					</div>
 								
 					<p></p>

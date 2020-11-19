@@ -3,6 +3,8 @@ package controller;
 import static spark.Spark.*;
 import java.util.HashMap;
 import java.util.Map;
+import model.PropostaModel;
+import repository.AnunciarRepository;
 import service.IsLogged;
 import spark.Request;
 import spark.Response;
@@ -30,5 +32,35 @@ public class AnunciarController {
         }
 
         return "";
+    }
+
+    public static String createAnunciar(Request req, Response res){
+
+        try{
+            Boolean cadastro = false;
+            AnunciarRepository anunciarRepository = new AnunciarRepository();
+
+            PropostaModel anuncioInfo = new PropostaModel();
+            anuncioInfo.setTitulo(req.queryParams("titulo").toString());
+            anuncioInfo.setDescricao(req.queryParams("descricao").toString());
+            anuncioInfo.setTipo(req.queryParams("tipo").toString());
+            anuncioInfo.setFkcodusuario(anunciarRepository.selectFkCodUsuario(req.cookie("usuario")));
+
+            cadastro = anunciarRepository.insertAnuncio(anuncioInfo);
+            System.out.println(anuncioInfo);
+            if(cadastro == false){
+
+                res.redirect("/anunciar");
+
+            } else {
+                res.redirect("/");
+            }
+
+        } catch(Exception error){
+
+            return error.toString();
+        }
+
+        return "";        
     }
 }

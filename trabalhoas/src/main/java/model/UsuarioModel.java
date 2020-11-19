@@ -6,6 +6,9 @@ public class UsuarioModel {
     private String nome;
     private String cpf;
     private String telefone;
+    private String login;
+    private String senha;
+    private String id;
     private String foto;
 
     public int getPkcodusuario() {
@@ -40,19 +43,35 @@ public class UsuarioModel {
         this.telefone = telefone;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getFoto() {
         return foto;
     }
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public UsuarioModel(int pkcodusuario, String nome, String cpf, String telefone, String foto) {
-        this.pkcodusuario = pkcodusuario;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.foto = foto;
-    }
+    }    
 }

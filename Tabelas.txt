@@ -54,3 +54,59 @@ start with 1;
 create sequence tbproposta_pk
 increment by 1
 start with 1;
+
+#########################################################
+#########################################################
+#########################################################
+#########################################################
+novas tabelas
+
+
+create table tbusuario(
+    pkcodusuario integer not null,
+    nome varchar2(50) not null,
+    cpf varchar2(11) not null,
+    telefone varchar2(11) not null,
+    login varchar2(50) not null,
+    senha varchar2(50) not null,
+    id varchar2(50),
+    foto blob
+);
+
+create table tbproposta(
+    pkcodproposta integer not null,
+    titulo varchar2(50) not null,
+    descricao varchar2(300) not null,
+    tipo integer not null,
+    foto1 blob,
+    foto2 blob,
+    foto3 blob,
+    dataHora date not null,
+    fkcodusuario integer not null
+);
+
+create table tbnegociacao(
+    pkcodnegociacao integer not null,
+    data_hora timestamp not null,
+    fkcodtbproposta1 integer not null,
+    fkcodtbproposta2 integer not null
+);
+
+alter table tbusuario add constraint tbusuario_pkcodusuario primary key(pkcodusuario);
+alter table tbproposta add constraint tbproposta_pkcodproposta primary key(pkcodproposta);
+alter table tbproposta add constraint tbproposta_fkcodusuario foreign key(fkcodusuario) references tbusuario(pkcodusuario);
+alter table tbnegociacao add constraint tbnegociacao_pkcodnegociacao primary key(pkcodnegociacao);
+alter table tbnegociacao add constraint tbnegociacao_fkcodtbproposta1 foreign key(fkcodtbproposta1) references tbproposta(pkcodproposta);
+alter table tbnegociacao add constraint tbnegociacao_fkcodtbproposta2 foreign key(fkcodtbproposta2) references tbproposta(pkcodproposta);
+
+create sequence tbusuario_pk
+increment by 1
+start with 1;
+
+create sequence tbnegociacao_pk
+increment by 1
+start with 1;
+
+create sequence tbproposta_pk
+increment by 1
+start with 1;
