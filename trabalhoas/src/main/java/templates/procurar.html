@@ -1,11 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> procurar </h1>
-</body>
-</html>
+
+	<!DOCTYPE html>
+
+	<html lang="pt-br">
+		
+		<head>
+			<!-- DECLARAÇÕES DO BOOTSTRAP -->
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="css/index.css">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+			<!-- TITULO DA PAGINA -->
+			<title>Procurar</title>
+		</head>
+		
+		<body> 
+						
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				
+				<nav class="navbar navbar-light bg-light">
+					<a class="navbar-brand" href="">
+						<img src="img\logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+					</a>
+				</nav>
+				
+				<a class="navbar-brand" href="http://localhost:4567/index"> BRIQUE DA GURIZADA </a>
+				
+				<!-- VERIFICAR ----------------------------------------- 
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"> </span>
+					</button>
+				-------------------------------------------------------->
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						
+						<!-- EXEMPLO DE ITEM ACTIVE ---------------------- 
+							<li class="nav-item active">
+								<a class="nav-link" href="#"> Meu perfil 
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+						------------------------------------------------->
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/meu_perfil"> Meu perfil </a>
+						</li>
+												
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/procurar"> Procurar </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/anunciar"> Anunciar </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/meus_anuncios"> Meus anúncios </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/propostas_realizadas"> Propostas realizadas </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/propostas_recebidas"> Propostas recebidas </a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/sobre"> Sobre o projeto </a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="http://localhost:4567/logout"><strong>Logout</strong></a>
+						</li>
+												
+					</ul>
+	
+				</div>
+				
+			</nav>
+			
+			<!--Container titulo-->
+			<div class="container mt-4">
+				
+				<h4>PROCURAR ANÚNCIOS</h4>
+				<div class="form-group"> 
+					<small id="observacao1" class="form-text text-muted">Pesquise por um anúncio anúncio específico.</small>
+				</div>
+				
+			</div>	
+			
+			<!--Container botão pesquisar-->
+			<div class="container mt-4">
+				
+				<form class="form-inline my-2 my-lg-0">
+					<p></p>
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button type="submit" class="btn btn-outline-primary">Procurar</button>
+				</form>
+			</div>
+			
+			<!--Container listagem de minhas propostas-->
+			<div class="container">
+
+				<br><br>
+				
+				<!--Inicio linha-->
+				<div class="row">
+
+					<!--Coluna usuários-->
+					<div class="col table-responsive">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Código</th>
+									<th scope="col">Anunciante</th>
+									<th scope="col">Tipo</th>
+									<th scope="col">Título do anúncio</th>
+									<th scope="col">Detalhamento do anúncio</th>
+									<th scope="col">Opção</th>
+								</tr>
+							</thead>
+							
+							
+							<tbody>
+								<tr>
+									<th scope="row"> pkcodanuncio </th>
+									<td> pkcodusuario </td>
+									<td> Objeto/Serviço </td>
+									<td> titulo </td>
+									<td> descricao </td>
+									<td> <a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/editar_proposta">Visualizar anúncio</a> </td>
+								</tr>
+															
+							</tbody>
+							
+						</table>
+
+					</div>
+					<!--Fim coluna usuários-->
+
+				</div>
+				<!--Fim linha-->
+
+			</div>
+			
+			<div class="container mt-4">
+				<p></p>
+					<div class="mt-3">
+						<a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/index">Voltar</a>
+					</div>
+				<p></p>
+			</div>
+			
+		</body>
+		
+	</html>
+
+

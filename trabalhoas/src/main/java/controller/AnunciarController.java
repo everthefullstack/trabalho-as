@@ -47,9 +47,8 @@ public class AnunciarController {
             anuncioInfo.setFkcodusuario(anunciarRepository.selectFkCodUsuario(req.cookie("usuario")));
 
             cadastro = anunciarRepository.insertAnuncio(anuncioInfo);
-            System.out.println(anuncioInfo);
+  
             if(cadastro == false){
-
                 res.redirect("/anunciar");
 
             } else {

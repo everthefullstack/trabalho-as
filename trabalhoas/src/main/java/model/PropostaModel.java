@@ -8,12 +8,30 @@ public class PropostaModel {
     private String titulo;
     private String descricao;
     private String tipo;
+    private int ativo;
+    private int oferta;
     private String foto1;
     private String foto2;
     private String foto3;
     private Timestamp dataHora;
     private int fkcodusuario;
 
+    public int getOferta() {
+        return oferta;
+    }
+
+    public void setOferta(int oferta) {
+        this.oferta = oferta;
+    }
+    
+    public int getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(int ativo) {
+        this.ativo = ativo;
+    }
+    
     public int getPkcodproposta() {
         return pkcodproposta;
     }

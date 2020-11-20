@@ -78,6 +78,8 @@ create table tbproposta(
     titulo varchar2(50) not null,
     descricao varchar2(300) not null,
     tipo integer not null,
+    oferta integer not null,
+    ativo integer not null,
     foto1 blob,
     foto2 blob,
     foto3 blob,
@@ -88,6 +90,8 @@ create table tbproposta(
 create table tbnegociacao(
     pkcodnegociacao integer not null,
     data_hora timestamp not null,
+    ativo int not null;
+    aceita varchar2 not null;
     fkcodtbproposta1 integer not null,
     fkcodtbproposta2 integer not null
 );

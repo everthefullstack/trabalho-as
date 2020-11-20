@@ -12,12 +12,14 @@ public class AnunciarRepository {
         DatabaseConnection db = new DatabaseConnection();
         db.Executor().executeQuery("INSERT INTO" +
                                       " tbproposta" +
-                                      " (pkcodproposta, titulo, descricao, tipo, datahora, fkcodusuario)" + 
+                                      " (pkcodproposta, titulo, descricao, tipo, ativo, oferta, datahora, fkcodusuario)" + 
                                   " VALUES" +
                                       "(TBPROPOSTA_PK.nextval," +
                                       "'" + anuncioInfo.getTitulo() + "'," +
                                       "'" + anuncioInfo.getDescricao() + "'," +
-                                      "'" + anuncioInfo.getTipo() + "'," +
+                                      "'" + anuncioInfo.getTipo() + "'," + //0 serviço | 1 produto
+                                      "1," + //0 inativo | 1 ativo
+                                      "0," + //0 não | 1 sim
                                       "sysdate," +
                                       "'" + anuncioInfo.getFkcodusuario() +"')");
         return true;

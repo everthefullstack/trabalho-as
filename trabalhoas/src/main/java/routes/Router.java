@@ -32,6 +32,7 @@ public class Router {
 
         //Rotas da página de meu propostas procurar
         get("/procurar", ProcurarController::getProcurarPage);
+        post("/procurar", ProcurarController::selectPropostas);
 
         //Rotas da página de meu anunciar
         get("/anunciar", AnunciarController::getAnunciarPage);
