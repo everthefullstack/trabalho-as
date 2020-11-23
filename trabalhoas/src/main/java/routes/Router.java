@@ -15,6 +15,8 @@ public class Router {
     
     public void getAllRoutes(){
 
+        staticFileLocation("/static");
+
         //Rotas da página de login
         get("/", LoginController::getLoginPage);
         post("/", LoginController::loginPage);
@@ -31,8 +33,11 @@ public class Router {
         post("/meu_perfil", MeuPerfilController::editPerfil);
 
         //Rotas da página de meu propostas procurar
-        get("/procurar", ProcurarController::getProcurarPage);
-        post("/procurar", ProcurarController::selectPropostas);
+        get("/procurar", ProcurarController::getProcurarAnunciosPage);
+        post("/procurar", ProcurarController::selectAnuncios);
+        get("/procurar/:pkcodproposta", ProcurarController::getAnuncioPage);
+        get("/procurar/proposta/:pkcodproposta", ProcurarController::getPropostaAnuncioPage);
+        //post("/procurar/proposta/:pkcodproposta", ProcurarController::createPropostaAnuncioPage);
 
         //Rotas da página de meu anunciar
         get("/anunciar", AnunciarController::getAnunciarPage);

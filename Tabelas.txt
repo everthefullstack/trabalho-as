@@ -61,7 +61,6 @@ start with 1;
 #########################################################
 novas tabelas
 
-
 create table tbusuario(
     pkcodusuario integer not null,
     nome varchar2(50) not null,
@@ -89,9 +88,9 @@ create table tbproposta(
 
 create table tbnegociacao(
     pkcodnegociacao integer not null,
-    data_hora timestamp not null,
-    ativo int not null;
-    aceita varchar2 not null;
+    data_hora date not null,
+    ativo int not null,
+    aceita int not null,
     fkcodtbproposta1 integer not null,
     fkcodtbproposta2 integer not null
 );

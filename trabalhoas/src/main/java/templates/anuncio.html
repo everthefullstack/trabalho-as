@@ -19,13 +19,13 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				
 				<nav class="navbar navbar-light bg-light">
-					<a class="navbar-brand">
-						<img src="img\logo.png" width="60" height="60" class="d-inline-block align-top" loading="lazy">
+					<a class="navbar-brand" href="">
+						<img src="http://localhost:4567/img/logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 					</a>
 				</nav>
 				
 				<a class="navbar-brand" href="http://localhost:4567/index"> BRIQUE DA GURIZADA </a>
-				
+			
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						
@@ -72,7 +72,7 @@
 			<div class="container-fluid col align-self-center">
 		
 				<!--Form novo anúncio -->
-				<form class="col-md-6 rounded mx-auto d-block" method="POST">
+				<div class="col-md-6 rounded mx-auto d-block">
 					
 					<h4>ANÚNCIO</h4>
 					<div class="form-group"> 
@@ -81,27 +81,33 @@
 					
 					<div class="form-group">
 					  <label for="tituloAnuncio">Título</label>
-					  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Carrega o título do anúncio" readonly>
+					  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Carrega o título do anúncio" readonly 
+					  	value="" th:value="${proposta.titulo}">
 					</div>
 					
 					<div class="form-group">
 						<label for="tipoAnuncio">Tipo de anúncio</label>
-						<input type="text" class="form-control" id="tipo" name="tipo" placeholder="Carrega o tipo de anúncio" readonly>
+						<input type="text" class="form-control" id="tipo" name="tipo" placeholder="Carrega o tipo de anúncio" readonly value="" th:value="${proposta.tipo}">
 					</div>
 						
 					<div class="form-group">
 						<label for="descricaoAnuncio">Descrição do anúncio</label>
-						<textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Carrega os detalhes das condições do anúncio" readonly></textarea>
+						<textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Carrega os detalhes das condições do anúncio" readonly
+							text="" th:text="${proposta.descricao}" value="" th:value="${proposta.descricao}">Descrição</textarea>
 					</div>
 								
 					<p></p>
 															
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block rounded mx-auto d-block">Realizar proposta</button>
-						<small id="notificacaoCadastro" class="form-text text-muted text-center">Ao clicar no botão, será redirecionado para a página de nova proposta.</small>
+						<a class="btn btn-primary btn-block rounded mx-auto d-block" role="button" 
+							th:href="@{'proposta/'+${proposta.pkcodproposta}}">Realizar proposta
+						</a>
+						<small id="notificacaoCadastro" class="form-text text-muted text-center">Ao clicar no botão, 
+							será redirecionado para a página de nova proposta.
+						</small>
 					</div>
 
-				</form>
+				</div>
 
 			</div>
 						

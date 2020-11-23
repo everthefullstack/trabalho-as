@@ -3,7 +3,9 @@ package controller;
 import static spark.Spark.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import model.PropostaModel;
+import model.UsuarioxPropostaModel;
 import repository.ProcurarRepository;
 import service.IsLogged;
 import spark.Request;
@@ -12,7 +14,7 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 public class ProcurarController {
     
-    public static String getProcurarPage(Request req, Response res) {
+    public static String getProcurarAnunciosPage(Request req, Response res) {
 
         try{
             IsLogged isLogged = new IsLogged();
@@ -34,25 +36,29 @@ public class ProcurarController {
         return "";
     }
 
-    public static String selectPropostas(Request req, Response res) {
+    public static String selectAnuncios(Request req, Response res) {
 
         try{
             IsLogged isLogged = new IsLogged();
             if(isLogged.isLogged(req.cookie("usuario")) == true){
 
-                ProcurarRepository procurarRepository = new ProcurarRepository();
-                HashMap<String, Object> model = new HashMap<>();
-                ArrayList<ArrayList> propostas = procurarRepository.selectPropostas(req.queryParams("procurar").toString());
-
-                for (ArrayList proposta : propostas) {
+                Map<String, Object> model = new HashMap<>();
+                ArrayList<UsuarioxPropostaModel> propostasModel = new ArrayList<>();
+                ArrayList<ArrayList> propostasArray = new ProcurarRepository().selectPropostas(req.queryParams("procurar").toString(),req.cookie("usuario"));
+                
+                for (ArrayList proposta : propostasArray) {
                     
-                    PropostaModel propostaInfo = new PropostaModel();
+                    UsuarioxPropostaModel propostaInfo = new UsuarioxPropostaModel();
                     propostaInfo.setPkcodproposta(Integer.parseInt((String) proposta.get(0)));
                     propostaInfo.setTitulo(proposta.get(1).toString());
                     propostaInfo.setDescricao(proposta.get(2).toString());
                     propostaInfo.setTipo(proposta.get(3).toString());
-                    //propostaInfo.setDataHora(proposta.get(4));
-                    model.put("proposta" + propostaInfo.getPkcodproposta(), propostaInfo);
+                    propostaInfo.setNome(proposta.get(4).toString());
+
+                    propostasModel.add(propostaInfo);
+
+                    model.put("proposta", propostasModel);
+                    
                 }
                 
                 return new ThymeleafTemplateEngine().render(modelAndView(model, "procurar"));
@@ -69,4 +75,90 @@ public class ProcurarController {
 
         return "";
     }
+
+    public static String getAnuncioPage(Request req, Response res) {
+
+        try{
+            IsLogged isLogged = new IsLogged();
+            if(isLogged.isLogged(req.cookie("usuario")) == true){
+
+                Map<String, Object> model = new HashMap<>();
+                PropostaModel proposta = new PropostaModel();
+                ArrayList propostaArray = new ProcurarRepository().selectProposta(req.params(":pkcodproposta"));
+                
+                proposta.setPkcodproposta(Integer.parseInt(propostaArray.get(0).toString()));
+                proposta.setTitulo(propostaArray.get(1).toString());
+                proposta.setDescricao(propostaArray.get(2).toString());
+                proposta.setTipo(propostaArray.get(3).toString());
+
+                model.put("proposta", proposta);
+
+                return new ThymeleafTemplateEngine().render(modelAndView(model, "anuncio"));
+                
+            } else {
+
+                res.redirect("/");
+            }
+            
+        }catch(Exception error){
+            
+            return error.toString();
+        }
+
+        return "";
+    }
+
+    public static String getPropostaAnuncioPage(Request req, Response res) {
+
+        try{
+            IsLogged isLogged = new IsLogged();
+            if(isLogged.isLogged(req.cookie("usuario")) == true){
+
+                Map<String, Object> model = new HashMap<>();
+                return new ThymeleafTemplateEngine().render(modelAndView(model, "proposta"));
+                
+            } else {
+
+                res.redirect("/");
+            }
+            
+        }catch(Exception error){
+            
+            return error.toString();
+        }
+
+        return "";
+    }
+
+    public static String createPropostaAnuncioPage(Request req, Response res){
+
+        try{
+            Boolean cadastro = false;
+            String pkcodproposta = "";
+            ProcurarRepository procurarRepository = new ProcurarRepository();
+
+            PropostaModel propostaInfo = new PropostaModel();
+            propostaInfo.setTitulo(req.queryParams("titulo").toString());
+            propostaInfo.setDescricao(req.queryParams("descricao").toString());
+            propostaInfo.setTipo(req.queryParams("tipo").toString());
+            propostaInfo.setFkcodusuario(procurarRepository.selectFkCodUsuario(req.cookie("usuario")));
+            pkcodproposta = req.params(":pkcodproposta");
+
+            cadastro = procurarRepository.insertProposta(propostaInfo, pkcodproposta);
+  
+            if(cadastro == false){
+                res.redirect("/anunciar");
+
+            } else {
+                res.redirect("/");
+            }
+
+        } catch(Exception error){
+
+            return error.toString();
+        }
+
+        return "";        
+    }
+    
 }

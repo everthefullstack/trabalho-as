@@ -21,7 +21,7 @@
 				
 				<nav class="navbar navbar-light bg-light">
 					<a class="navbar-brand" href="">
-						<img src="img\logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+						<img src="img/logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 					</a>
 				</nav>
 				
@@ -87,7 +87,7 @@
 				
 				<h4>PROCURAR ANÚNCIOS</h4>
 				<div class="form-group"> 
-					<small id="observacao1" class="form-text text-muted">Pesquise por um anúncio anúncio específico.</small>
+					<small id="observacao1" class="form-text text-muted">Pesquise um anúncio inserindo uma palavra chave específica.</small>
 				</div>
 				
 			</div>	
@@ -95,9 +95,9 @@
 			<!--Container botão pesquisar-->
 			<div class="container mt-4">
 				
-				<form class="form-inline my-2 my-lg-0">
+				<form class="form-inline my-2 my-lg-0" method="POST">
 					<p></p>
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="procurar" name="procurar">
 					<button type="submit" class="btn btn-outline-primary">Procurar</button>
 				</form>
 			</div>
@@ -123,19 +123,20 @@
 									<th scope="col">Detalhamento do anúncio</th>
 									<th scope="col">Opção</th>
 								</tr>
-							</thead>
-							
+							</thead>							
 							
 							<tbody>
-								<tr>
-									<th scope="row"> pkcodanuncio </th>
-									<td> pkcodusuario </td>
-									<td> Objeto/Serviço </td>
-									<td> titulo </td>
-									<td> descricao </td>
-									<td> <a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/editar_proposta">Visualizar anúncio</a> </td>
-								</tr>
-															
+
+								<tr th:each="p : ${proposta}">
+											
+									<td th:text="${p.pkcodproposta}"> pkcodanuncio </td>
+									<td th:text="${p.nome}"> nome </td>
+									<td th:text="${p.tipo}"> Objeto/Serviço </td>
+									<td th:text="${p.titulo}"> titulo </td>
+									<td th:text="${p.descricao}"> descricao </td>
+									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'procurar/'+${p.pkcodproposta}}">Visualizar anúncio</a> </td>
+																
+								</tr>						
 							</tbody>
 							
 						</table>
@@ -159,5 +160,3 @@
 		</body>
 		
 	</html>
-
-
