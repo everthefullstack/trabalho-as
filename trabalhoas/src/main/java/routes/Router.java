@@ -3,6 +3,7 @@ package routes;
 import static spark.Spark.*;
 import controller.LoginController;
 import controller.MeuPerfilController;
+import controller.MeusAnunciosController;
 import controller.ProcurarController;
 import controller.PropRealizadasController;
 import controller.PropRecebidasController;
@@ -37,15 +38,20 @@ public class Router {
         post("/procurar", ProcurarController::selectAnuncios);
         get("/procurar/:pkcodproposta", ProcurarController::getAnuncioPage);
         get("/procurar/proposta/:pkcodproposta", ProcurarController::getPropostaAnuncioPage);
-        //post("/procurar/proposta/:pkcodproposta", ProcurarController::createPropostaAnuncioPage);
+        post("/procurar/proposta/:pkcodproposta", ProcurarController::createPropostaAnuncioPage);
 
         //Rotas da página de meu anunciar
         get("/anunciar", AnunciarController::getAnunciarPage);
         post("/anunciar", AnunciarController::createAnunciar);
 
+        get("/meus_anuncios", MeusAnunciosController::getMeusAnunciosPage);
+        get("/meus_anuncios/editar/:pkcodproposta", MeusAnunciosController::getEditarMeusAnunciosPage);
+        post("/meus_anuncios/editar/:pkcodproposta", MeusAnunciosController::editAnuncio);
+
         //Rotas da página de meu propostas realizadas
         get("/propostas_realizadas", PropRealizadasController::getPropRealizadasPage);
-
+        get("/propostas_realizadas/editar/:pkcodproposta", PropRealizadasController::getEditarPropRealizadasPage);
+        post("/propostas_realizadas/editar/:pkcodproposta", PropRealizadasController::editProposta);
         //Rotas da página de meu propostas recebidas
         get("/propostas_recebidas", PropRecebidasController::getPropRecebidasPage);
 

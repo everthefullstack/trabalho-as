@@ -7,6 +7,7 @@ public class UsuarioxPropostaModel extends UsuarioModel{
     private String descricao;
     private String tipo;
     private String dataHora;
+    private String ativo;
 
     public int getPkcodproposta() {
         return pkcodproposta;
@@ -46,5 +47,13 @@ public class UsuarioxPropostaModel extends UsuarioModel{
 
     public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
-    }   
+    }
+
+    public String getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
+    }
 }

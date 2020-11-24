@@ -44,7 +44,7 @@ public class ProcurarRepository {
         return lista;
     }
 
-    public ArrayList selectProposta(String pkcodproposta) throws SQLException, IOException {
+    public ArrayList selectProposta(String pkcodproposta, String id) throws SQLException, IOException {
         
         ArrayList<String> res = new ArrayList();
 
@@ -55,9 +55,13 @@ public class ProcurarRepository {
                                                             " descricao," +
                                                             " case tipo when 0 then 'Serviço' else 'Produto' end as tipo" +
                                                         " FROM" + 
-                                                            " TBPROPOSTA" +
+                                                            " TBPROPOSTA pr" +
+                                                        " INNER JOIN" +
+                                                            " TBUSUARIO us on "+
+                                                            "us.PKCODUSUARIO=pr.FKCODUSUARIO" +
                                                         " WHERE" +
-                                                            " pkcodproposta = " + pkcodproposta);
+                                                            " pkcodproposta = " + pkcodproposta +
+                                                        " AND id != '" + id + "'");
         while(result.next()){
 
             res.add(result.getString("pkcodproposta"));
@@ -69,7 +73,7 @@ public class ProcurarRepository {
         return res;
     }
 
-    public boolean insertProposta(PropostaModel anuncioInfo, String pkcodproposta) throws SQLException, IOException {
+    public boolean insertProposta(PropostaModel anuncioInfo, String fkcodproposta1) throws SQLException, IOException {
 
         DatabaseConnection db = new DatabaseConnection();
         ResultSet result = db.Executor().executeQuery("INSERT INTO" +
@@ -85,7 +89,28 @@ public class ProcurarRepository {
                                                             "sysdate," +
                                                             "'" + anuncioInfo.getFkcodusuario() +"')");
         
-        result.last();
+        result = db.Executor().executeQuery("SELECT" +
+                                                " MAX(pkcodproposta)as pkcodproposta" +
+                                            " FROM" +
+                                                " tbproposta" +
+                                            " WHERE" +
+                                                " oferta = 1" +
+                                            " AND" + 
+                                                " fkcodusuario = " + anuncioInfo.getFkcodusuario());
+        result.next();
+        int fkcodproposta2 = result.getInt("pkcodproposta");
+
+        result = db.Executor().executeQuery("INSERT INTO" +
+                                                " tbnegociacao" +
+                                                " (pkcodnegociacao, data_hora, ativo, aceita, fkcodtbproposta1, fkcodtbproposta2)" + 
+                                            " VALUES" +
+                                                "(TBNEGOCIACAO_PK.nextval," +
+                                                "sysdate," +
+                                                "1," + //0 nao ativo | 1 ativo
+                                                "2," + //0 não | 1 sim | 2 aguardando | 3 proposta editada
+                                                fkcodproposta1 + "," +
+                                                fkcodproposta2 + ")");
+
         return true;
     }
 

@@ -21,7 +21,7 @@
 				
 				<nav class="navbar navbar-light bg-light">
 					<a class="navbar-brand" href="">
-						<img src="img\logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+						<img src="http://localhost:4567/img/logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 					</a>
 				</nav>
 				
@@ -100,17 +100,18 @@
 					<div class="form-group row">
 						<label for="tituloAnuncio" class="col-sm-2 col-form-label">Título</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="tituloAnuncio" name="tituloAnuncio" placeholder="titulo Anuncio"
-								value="Carregar informação aqui" required>
+							<input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo Anuncio"
+								value="" th:value="${proposta.titulo}" required>
 						</div>
 					</div>
 					
 					<div class="form-group row">
 						<label for="tipoAnuncio" class="col-sm-2 col-form-label">Tipo de anúncio</label>
 						<div class="col-sm-10">
-							<select class="custom-select" name="tipoAnuncio">
-								<option>Serviço</option>
-								<option>produto</option>
+							<select class="custom-select" id="tipo" name="tipo">
+								<option> Escolha um valor...</option>
+								<option value="0">Serviço</option>
+								<option value="1">Produto</option>
 							</select>
 						</div>
 					</div>
@@ -118,23 +119,24 @@
 					<div class="form-group row">
 						<label for="descricaoAnuncio" class="col-sm-2 col-form-label">Descrição do anúncio</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" id="descricaoAnuncio" rows="5" placeholder="Datalhe as condições do anúncio" required></textarea>
+							<textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Datalhe as condições do anúncio" 
+								text="" th:text="${proposta.descricao}" value="" th:value="${proposta.descricao}" required></textarea>
 						</div>
 					</div>
+
+					<div class="container mt-4">
+						<p></p>
+							<div class="mt-3">
+								<button type="submit" class="btn btn-primary btn-custom">Confirmar alterações</button>
+								<a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/index">Voltar</a>
+							</div>
+						<p></p>
+					</div>	
 
 				</form>
 
 			</div>
 			
-			<div class="container mt-4">
-				<p></p>
-					<div class="mt-3">
-						<button type="submit" class="btn btn-primary btn-custom">Confirmar alterações</button>
-						<a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/index">Voltar</a>
-					</div>
-				<p></p>
-			</div>	
-	
 		</body>
 		
 	</html>

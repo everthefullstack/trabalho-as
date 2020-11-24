@@ -44,7 +44,7 @@ public class ProcurarController {
 
                 Map<String, Object> model = new HashMap<>();
                 ArrayList<UsuarioxPropostaModel> propostasModel = new ArrayList<>();
-                ArrayList<ArrayList> propostasArray = new ProcurarRepository().selectPropostas(req.queryParams("procurar").toString(),req.cookie("usuario"));
+                ArrayList<ArrayList> propostasArray = new ProcurarRepository().selectPropostas(req.queryParams("procurar").toString(), req.cookie("usuario"));
                 
                 for (ArrayList proposta : propostasArray) {
                     
@@ -84,7 +84,7 @@ public class ProcurarController {
 
                 Map<String, Object> model = new HashMap<>();
                 PropostaModel proposta = new PropostaModel();
-                ArrayList propostaArray = new ProcurarRepository().selectProposta(req.params(":pkcodproposta"));
+                ArrayList propostaArray = new ProcurarRepository().selectProposta(req.params(":pkcodproposta"), req.cookie("usuario"));
                 
                 proposta.setPkcodproposta(Integer.parseInt(propostaArray.get(0).toString()));
                 proposta.setTitulo(propostaArray.get(1).toString());
@@ -134,7 +134,7 @@ public class ProcurarController {
 
         try{
             Boolean cadastro = false;
-            String pkcodproposta = "";
+            String fkcodtbproposta1 = "";
             ProcurarRepository procurarRepository = new ProcurarRepository();
 
             PropostaModel propostaInfo = new PropostaModel();
@@ -142,9 +142,9 @@ public class ProcurarController {
             propostaInfo.setDescricao(req.queryParams("descricao").toString());
             propostaInfo.setTipo(req.queryParams("tipo").toString());
             propostaInfo.setFkcodusuario(procurarRepository.selectFkCodUsuario(req.cookie("usuario")));
-            pkcodproposta = req.params(":pkcodproposta");
+            fkcodtbproposta1 = req.params(":pkcodproposta");
 
-            cadastro = procurarRepository.insertProposta(propostaInfo, pkcodproposta);
+            cadastro = procurarRepository.insertProposta(propostaInfo, fkcodtbproposta1);
   
             if(cadastro == false){
                 res.redirect("/anunciar");
