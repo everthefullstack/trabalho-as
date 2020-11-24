@@ -102,17 +102,17 @@
 								</tr>
 							</thead>
 							
-							
 							<tbody>
-								<tr>
-									<th scope="row"> pkcodproposta </th>
-									<td> Ativo/Inativo </td>
-									<td> pkcodusuario </td>
-									<td> Objeto/Serviço </td>
-									<td> titulo </td>
-									<td> descricao </td>
-									<td> <a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/editar_proposta">Visualizar proposta</a> </td>
-								</tr>
+								<tbody>
+									<tr th:each="p : ${proposta}">	
+										<td th:text="${p.pkcodproposta}"> pkcodanuncio </td>
+										<td th:text="${p.ativo}"> status </td>
+										<td th:text="${p.nome}"> nome </td>
+										<td th:text="${p.tipo}"> Objeto/Serviço </td>
+										<td th:text="${p.titulo}"> titulo </td>
+										<td th:text="${p.descricao}"> descricao </td>
+										<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'propostas_recebidas/visualizar/'+${p.pkcodproposta}}">Visualizar proposta</a> </td>							
+									</tr>			
 							</tbody>
 							
 						</table>

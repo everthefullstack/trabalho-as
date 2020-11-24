@@ -21,7 +21,7 @@
 				
 				<nav class="navbar navbar-light bg-light">
 					<a class="navbar-brand" href="">
-						<img src="img\logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+						<img src="http://localhost:4567/img/logo.png" width="60" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 					</a>
 				</nav>
 				
@@ -84,49 +84,60 @@
 					
 					<div class="form-group">
 						<label for="nome">Anunciante</label>
-						<input type="text" class="form-control" id="nome" name="nome" placeholder="Carrega aqui nome do anunciante" readonly>
+						<input type="text" class="form-control" id="nome" name="nome" placeholder="Carrega aqui nome do anunciante" 
+							value="" th:value="${proposta.nome}" readonly>
 					</div>
 
 					<div class="form-group">
 						<label for="telefone">Telefone</label>
-						<input type="text" class="form-control" id="telefone" name="telefone" placeholder="Carrega aqui telefone do anunciante" readonly>
+						<input type="text" class="form-control" id="telefone" name="telefone" placeholder="Carrega aqui telefone do anunciante" 
+							value="" th:value="${proposta.telefone}"readonly>
 					</div>
 					
 					<div class="form-group">
 					  <label for="tituloAnuncio">Título do anúncio</label>
-					  <input type="text" class="form-control" id="tituloAnuncio" name="tituloAnuncio" placeholder="Carrega aqui título" readonly>
+					  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Carrega aqui título" 
+					  		value="" th:value="${proposta.titulo}"readonly>
 					</div>
 					
 					<div class="form-group">
 						<label for="tipoAnuncio">Tipo de anúncio</label>
-						<input type="text" class="form-control" id="tipoAnuncio" name="tipoAnuncio" placeholder="Carrega aqui tipo de anuncio (Serviço/Objeto)" readonly>
+						<input type="text" class="form-control" id="tipoAnuncio" name="tipo" placeholder="Carrega aqui tipo de anuncio (Serviço/Objeto)" 
+							value="" th:value="${proposta.tipo}"readonly>
 					</div>
 						
 					<div class="form-group">
 						<label for="descricaoAnuncio">Descrição do anúncio</label>
-						<textarea class="form-control" id="descricaoAnuncio" rows="5" placeholder="Datalhe das condições do anúncio ofertado" readonly></textarea>
+						<textarea class="form-control" id="descricao" rows="5" placeholder="Datalhe das condições do anúncio ofertado" 
+							text="" th:text="${proposta.descricao}" value="" th:value="${proposta.descricao}"readonly></textarea>
 					</div>
 					
-					<div class="form-group">
-						<label for="aceiteProposta">Aceitar proposta</label>
-						<select class="custom-select" name="aceiteProposta">
-							<option>Selecione</option>
-							<option value="0">Não</option>
-							<option value="1">Sim</option>
-						</select>
-					</div>
-												
-					<p></p>
+					<div th:if="${proposta.ativo == 1}">
+						<div class="form-group">
+							<label for="aceiteProposta">Aceitar proposta</label>
+							<select class="custom-select" name="aceite">
+								<option>Selecione</option>
+								<option value="0">Não</option>
+								<option value="1">Sim</option>
+							</select>
+						</div>
+													
+						<p></p>
 															
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block rounded mx-auto d-block">Confirmar</button>
-					</div>
-					
-				</form>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block rounded mx-auto d-block">Confirmar</button>
+						</div>
 
+					</div>
+
+					<div class="mt-3">
+						<a class="btn btn-primary" role="button" href="http://localhost:4567/propostas_recebidas">Voltar</a>
+					</div>
+
+				</form>
+				
 			</div>
 						
 		</body>
 		
 	</html>
-	

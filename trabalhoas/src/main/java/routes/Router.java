@@ -52,8 +52,11 @@ public class Router {
         get("/propostas_realizadas", PropRealizadasController::getPropRealizadasPage);
         get("/propostas_realizadas/editar/:pkcodproposta", PropRealizadasController::getEditarPropRealizadasPage);
         post("/propostas_realizadas/editar/:pkcodproposta", PropRealizadasController::editProposta);
+
         //Rotas da página de meu propostas recebidas
         get("/propostas_recebidas", PropRecebidasController::getPropRecebidasPage);
+        get("/propostas_recebidas/visualizar/:pkcodproposta", PropRecebidasController::getVisualizarPropRecebidasPage);
+        post("/propostas_recebidas/visualizar/:pkcodproposta", PropRecebidasController::acceptPropRecebidas);
 
         //Rotas da página de sobre
         get("/sobre", SobreController::getSobrePage);
