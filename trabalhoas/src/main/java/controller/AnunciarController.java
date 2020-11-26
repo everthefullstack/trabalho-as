@@ -49,10 +49,10 @@ public class AnunciarController {
             cadastro = anunciarRepository.insertAnuncio(anuncioInfo);
   
             if(cadastro == false){
-                res.redirect("/anunciar");
+                res.redirect("/");
 
             } else {
-                res.redirect("/");
+                res.redirect("/meus_anuncios");
             }
 
         } catch(Exception error){

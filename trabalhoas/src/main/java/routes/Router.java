@@ -22,13 +22,13 @@ public class Router {
         get("/", LoginController::getLoginPage);
         post("/", LoginController::loginPage);
 
-        //Rotas da página de index
-        get("/index", IndexController::getIndexPage);
-
         //Rotas da página de cadastro
         get("/cadastro", CadastroController::getCadastroPage);
         post("/cadastro", CadastroController::createCadastro);
 
+        //Rotas da página de index
+        get("/index", IndexController::getIndexPage);
+        
         //Rotas da página de meu perfil
         get("/meu_perfil", MeuPerfilController::getMeuPerfilPage);
         post("/meu_perfil", MeuPerfilController::editPerfil);

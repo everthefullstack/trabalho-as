@@ -147,10 +147,10 @@ public class ProcurarController {
             cadastro = procurarRepository.insertProposta(propostaInfo, fkcodtbproposta1);
   
             if(cadastro == false){
-                res.redirect("/anunciar");
+                res.redirect("/");
 
             } else {
-                res.redirect("/");
+                res.redirect("/anunciar");
             }
 
         } catch(Exception error){
@@ -160,5 +160,5 @@ public class ProcurarController {
 
         return "";        
     }
-    
+   
 }

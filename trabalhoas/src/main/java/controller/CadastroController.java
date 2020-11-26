@@ -2,6 +2,7 @@ package controller;
 
 import static spark.Spark.*;
 import java.util.HashMap;
+import java.util.Map;
 import model.UsuarioModel;
 import spark.Request;
 import spark.Response;
@@ -13,7 +14,7 @@ public class CadastroController {
     public static String getCadastroPage(Request req, Response res) {
 
         try{
-            HashMap<String, Object> model = new HashMap<>();
+            Map<String, Object> model = new HashMap<>();
             return new ThymeleafTemplateEngine().render(modelAndView(model, "cadastro"));
             
         }catch(Exception error){
