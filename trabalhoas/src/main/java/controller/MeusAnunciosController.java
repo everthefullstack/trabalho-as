@@ -27,8 +27,8 @@ public class MeusAnunciosController {
                 for (ArrayList proposta : propostasArray) {
                     
                     UsuarioxPropostaModel propostaInfo = new UsuarioxPropostaModel();
-                    propostaInfo.setPkcodproposta(Integer.parseInt((String) proposta.get(0)));
-                    propostaInfo.setTitulo(proposta.get(1).toString());
+                    propostaInfo.setPkcodpropostaUm(Integer.parseInt((String) proposta.get(0)));
+                    propostaInfo.setTituloUm(proposta.get(1).toString());
                     propostaInfo.setDescricao(proposta.get(2).toString());
                     propostaInfo.setTipo(proposta.get(3).toString());
                     propostaInfo.setNome(proposta.get(4).toString());

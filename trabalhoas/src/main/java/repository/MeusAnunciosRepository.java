@@ -62,6 +62,8 @@ public class MeusAnunciosRepository {
                                                             " TBUSUARIO us on "+
                                                             "us.PKCODUSUARIO=pr.FKCODUSUARIO" +
                                                         " WHERE" +
+                                                            " ativo = 1" +
+                                                        " AND" +
                                                             " pkcodproposta = " + pkcodproposta +
                                                         " AND id = '" + id + "'");
         while(result.next()){

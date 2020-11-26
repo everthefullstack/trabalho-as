@@ -129,12 +129,12 @@
 
 								<tr th:each="p : ${proposta}">
 											
-									<td th:text="${p.pkcodproposta}"> pkcodanuncio </td>
+									<td th:text="${p.pkcodpropostaUm}"> pkcodanuncio </td>
 									<td th:text="${p.nome}"> nome </td>
 									<td th:text="${p.tipo}"> Objeto/Serviço </td>
-									<td th:text="${p.titulo}"> titulo </td>
+									<td th:text="${p.tituloUm}"> titulo </td>
 									<td th:text="${p.descricao}"> descricao </td>
-									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'procurar/'+${p.pkcodproposta}}">Visualizar anúncio</a> </td>
+									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'procurar/'+${p.pkcodpropostaUm}}">Visualizar anúncio</a> </td>
 																
 								</tr>						
 							</tbody>

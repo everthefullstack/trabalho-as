@@ -2,27 +2,29 @@ package model;
 
 public class UsuarioxPropostaModel extends UsuarioModel{
 
-    private int pkcodproposta;
-    private String titulo;
+    private int pkcodpropostaUm;
+    private String tituloUm;
     private String descricao;
     private String tipo;
     private String dataHora;
     private String ativo;
+    private int pkcodpropostaDois;
+    private String tituloDois;
 
-    public int getPkcodproposta() {
-        return pkcodproposta;
+    public int getPkcodpropostaUm() {
+        return pkcodpropostaUm;
     }
 
-    public void setPkcodproposta(int pkcodproposta) {
-        this.pkcodproposta = pkcodproposta;
+    public void setPkcodpropostaUm(int pkcodpropostaUm) {
+        this.pkcodpropostaUm = pkcodpropostaUm;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTituloUm() {
+        return tituloUm;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTituloUm(String tituloUm) {
+        this.tituloUm = tituloUm;
     }
 
     public String getDescricao() {
@@ -55,5 +57,21 @@ public class UsuarioxPropostaModel extends UsuarioModel{
 
     public void setAtivo(String ativo) {
         this.ativo = ativo;
+    }
+
+    public int getPkcodpropostaDois() {
+        return pkcodpropostaDois;
+    }
+
+    public void setPkcodpropostaDois(int pkcodpropostaDois) {
+        this.pkcodpropostaDois = pkcodpropostaDois;
+    }
+
+    public String getTituloDois() {
+        return tituloDois;
+    }
+
+    public void setTituloDois(String tituloDois) {
+        this.tituloDois = tituloDois;
     }
 }

@@ -96,8 +96,8 @@
 									<th scope="col">Status</th>
 									<th scope="col">Anunciante</th>
 									<th scope="col">Tipo</th>
-									<th scope="col">Título do anúncio</th>
-									<th scope="col">Detalhamento do anúncio</th>
+									<th scope="col">Título</th>
+									<th scope="col">Descrição</th>
 									<th scope="col">Opção</th>
 								</tr>
 							</thead>
@@ -107,13 +107,13 @@
 
 								<tr th:each="p : ${proposta}">
 											
-									<td th:text="${p.pkcodproposta}"> pkcodanuncio </td>
+									<td th:text="${p.pkcodpropostaUm}"> pkcodanuncio </td>
 									<td th:text="${p.ativo}"> status </td>
 									<td th:text="${p.nome}"> nome </td>
 									<td th:text="${p.tipo}"> Objeto/Serviço </td>
-									<td th:text="${p.titulo}"> titulo </td>
+									<td th:text="${p.tituloUm}"> titulo </td>
 									<td th:text="${p.descricao}"> descricao </td>
-									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'meus_anuncios/editar/'+${p.pkcodproposta}}">Editar anúncio</a> </td>
+									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'meus_anuncios/editar/'+${p.pkcodpropostaUm}}">Editar</a> </td>
 																
 								</tr>						
 							</tbody>
@@ -131,7 +131,7 @@
 			<div class="container mt-4">
 				<p></p>
 					<div class="mt-3">
-						<a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/index">Voltar</a>
+						<a class="btn btn-primary btn-custom" role="button" href="http://localhost:4567/meus_anuncios">Voltar</a>
 					</div>
 				<p></p>
 			</div>

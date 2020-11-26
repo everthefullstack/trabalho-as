@@ -41,6 +41,30 @@ public class PropRecebidasRepository {
                                                                         " tbproposta pr on pr.fkcodusuario=us.pkcodusuario" +
                                                                     " where"+
                                                                         " us.id = '" + id + "'))");
+            
+        ResultSet result2 = db.Executor().executeQuery("select" + 
+                                                            " pr.pkcodproposta as proposta2," +
+                                                            " pr.titulo as titulo2" +                                   
+                                                        " from" +
+                                                            " tbproposta pr" +
+                                                        " inner join" +
+                                                            " tbusuario us on pr.fkcodusuario=us.pkcodusuario" +
+                                                        " where" +
+                                                            " pr.pkcodproposta in" +
+                                                                "(select" +
+                                                                    " fkcodtbproposta1" +
+                                                                " from" + 
+                                                                    " tbnegociacao" +
+                                                                " where" +
+                                                                    " fkcodtbproposta1 in(" +
+                                                                        "select" + 
+                                                                            " pr.pkcodproposta" +
+                                                                        " from" +
+                                                                            " tbusuario us" +
+                                                                        " inner join" +
+                                                                            " tbproposta pr on pr.fkcodusuario=us.pkcodusuario" +
+                                                                        " where"+
+                                                                            " us.id = '" + id + "'))");                                                                
         while(result.next()){
 
             ArrayList<String> res = new ArrayList();
@@ -51,6 +75,10 @@ public class PropRecebidasRepository {
             res.add(result.getString("nome"));
             res.add(result.getString("ativo"));
             res.add(result.getString("telefone"));
+
+            result2.next();
+            res.add(result2.getString("proposta2"));
+            res.add(result2.getString("titulo2"));
             lista.add(res);
         }
 
@@ -114,7 +142,7 @@ public class PropRecebidasRepository {
                                       " WHERE" +
                                         " fkcodtbproposta2 = " + pkcodproposta);
 
-        } else if(aceite == 1){
+        } else if(aceite == 0){
 
             db.Executor().executeQuery("UPDATE tbnegociacao" +
                                       " SET" + 

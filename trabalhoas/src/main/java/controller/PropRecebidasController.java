@@ -26,13 +26,15 @@ public class PropRecebidasController {
                 for (ArrayList proposta : propostasArray) {
                     
                     UsuarioxPropostaModel propostaInfo = new UsuarioxPropostaModel();
-                    propostaInfo.setPkcodproposta(Integer.parseInt((String) proposta.get(0)));
-                    propostaInfo.setTitulo(proposta.get(1).toString());
+                    propostaInfo.setPkcodpropostaUm(Integer.parseInt((String) proposta.get(0)));
+                    propostaInfo.setTituloUm(proposta.get(1).toString());
                     propostaInfo.setDescricao(proposta.get(2).toString());
                     propostaInfo.setTipo(proposta.get(3).toString());
                     propostaInfo.setNome(proposta.get(4).toString());
                     propostaInfo.setAtivo(proposta.get(5).toString());
                     propostaInfo.setTelefone(proposta.get(6).toString());
+                    propostaInfo.setPkcodpropostaDois(Integer.parseInt((String) proposta.get(7)));
+                    propostaInfo.setTituloDois((proposta.get(8).toString()));
 
                     propostasModel.add(propostaInfo);
 
@@ -64,10 +66,10 @@ public class PropRecebidasController {
                 UsuarioxPropostaModel propostaModel = new UsuarioxPropostaModel();
                 ArrayList propostaArray = new PropRecebidasRepository().selectProposta(req.params(":pkcodproposta"));
                 
-                propostaModel.setPkcodproposta(Integer.parseInt(propostaArray.get(0).toString()));
+                propostaModel.setPkcodpropostaUm(Integer.parseInt(propostaArray.get(0).toString()));
                 propostaModel.setNome(propostaArray.get(1).toString());
                 propostaModel.setTelefone(propostaArray.get(2).toString());
-                propostaModel.setTitulo(propostaArray.get(3).toString());
+                propostaModel.setTituloUm(propostaArray.get(3).toString());
                 propostaModel.setTipo(propostaArray.get(4).toString());
                 propostaModel.setDescricao(propostaArray.get(5).toString());
                 propostaModel.setAtivo(propostaArray.get(6).toString());

@@ -94,10 +94,12 @@
 								<tr>
 									<th scope="col">Código</th>
 									<th scope="col">Status</th>
-									<th scope="col">Anunciante</th>
+									<th scope="col">Proponente</th>
 									<th scope="col">Tipo</th>
-									<th scope="col">Título da proposta</th>
-									<th scope="col">Detalhamento da proposta</th>
+									<th scope="col">Título</th>
+									<th scope="col">Descrição</th>
+									<th scope="col">Anúncio</th>
+									<th scope="col">Código</th>
 									<th scope="col">Opção</th>
 								</tr>
 							</thead>
@@ -105,13 +107,15 @@
 							<tbody>
 
 								<tr th:each="p : ${proposta}">	
-									<td th:text="${p.pkcodproposta}"> pkcodanuncio </td>
+									<td th:text="${p.pkcodpropostaUm}"> pkcodanuncio </td>
 									<td th:text="${p.ativo}"> status </td>
 									<td th:text="${p.nome}"> nome </td>
 									<td th:text="${p.tipo}"> Objeto/Serviço </td>
-									<td th:text="${p.titulo}"> titulo </td>
+									<td th:text="${p.tituloUm}"> titulo </td>
 									<td th:text="${p.descricao}"> descricao </td>
-									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'propostas_realizadas/editar/'+${p.pkcodproposta}}">Editar anúncio</a> </td>							
+									<td th:text="${p.tituloDois}"> anuncio </td>
+									<td th:text="${p.pkcodpropostaDois}"> anuncio </td>
+									<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'propostas_realizadas/editar/'+${p.pkcodpropostaUm}}">Editar</a> </td>							
 								</tr>						
 							</tbody>
 							

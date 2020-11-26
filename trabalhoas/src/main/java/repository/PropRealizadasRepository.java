@@ -29,6 +29,30 @@ public class PropRealizadasRepository {
                                                         " WHERE" +
                                                             " oferta = 1" +
                                                         " AND id = '" + id + "'");
+
+        ResultSet result2 = db.Executor().executeQuery("select" + 
+                                                            " pr.pkcodproposta as proposta2," +
+                                                            " pr.titulo as titulo2" +                                   
+                                                        " from" +
+                                                            " tbproposta pr" +
+                                                        " inner join" +
+                                                            " tbusuario us on pr.fkcodusuario=us.pkcodusuario" +
+                                                        " where" +
+                                                            " pr.pkcodproposta in" +
+                                                                "(select" +
+                                                                    " fkcodtbproposta1" +
+                                                                " from" + 
+                                                                    " tbnegociacao" +
+                                                                " where" +
+                                                                    " fkcodtbproposta2 in(" +
+                                                                        "select" + 
+                                                                            " pr.pkcodproposta" +
+                                                                        " from" +
+                                                                            " tbusuario us" +
+                                                                        " inner join" +
+                                                                            " tbproposta pr on pr.fkcodusuario=us.pkcodusuario" +
+                                                                        " where"+
+                                                                            " us.id = '" + id + "'))");  
         while(result.next()){
 
             ArrayList<String> res = new ArrayList();
@@ -38,6 +62,10 @@ public class PropRealizadasRepository {
             res.add(result.getString("tipo"));
             res.add(result.getString("nome"));
             res.add(result.getString("ativo"));
+
+            result2.next();
+            res.add(result2.getString("proposta2"));
+            res.add(result2.getString("titulo2"));
             lista.add(res);
         }
 

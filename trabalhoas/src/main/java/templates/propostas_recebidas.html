@@ -94,24 +94,28 @@
 								<tr>
 									<th scope="col">Código</th>
 									<th scope="col">Status</th>
-									<th scope="col">Anunciante</th>
+									<th scope="col">Proponente</th>
 									<th scope="col">Tipo</th>
-									<th scope="col">Título da proposta</th>
-									<th scope="col">Detalhamento da proposta</th>
+									<th scope="col">Título</th>
+									<th scope="col">Descrição</th>
+									<th scope="col">Anúncio</th>
+									<th scope="col">Código</th>
 									<th scope="col">Opção</th>
 								</tr>
 							</thead>
 							
 							<tbody>
 								<tbody>
-									<tr th:each="p : ${proposta}">	
-										<td th:text="${p.pkcodproposta}"> pkcodanuncio </td>
+									<tr th:each="p : ${proposta}">		
+										<td th:text="${p.pkcodpropostaUm}"> pkcodanuncio </td>
 										<td th:text="${p.ativo}"> status </td>
-										<td th:text="${p.nome}"> nome </td>
-										<td th:text="${p.tipo}"> Objeto/Serviço </td>
-										<td th:text="${p.titulo}"> titulo </td>
+										<td th:text="${p.nome}"> Proponente </td>
+										<td th:text="${p.tipo}"> Tipo </td>
+										<td th:text="${p.tituloUm}"> titulo </td>
 										<td th:text="${p.descricao}"> descricao </td>
-										<td> <a class="btn btn-primary btn-custom" role="button" th:href="@{'propostas_recebidas/visualizar/'+${p.pkcodproposta}}">Visualizar proposta</a> </td>							
+										<td th:text="${p.tituloDois}"> anuncio </td>
+										<td th:text="${p.pkcodpropostaDois}"> codigo </td>
+										<td> <a class="btn btn-primary" role="button" th:href="@{'propostas_recebidas/visualizar/'+${p.pkcodpropostaUm}}">Visualizar</a> </td>
 									</tr>			
 							</tbody>
 							
