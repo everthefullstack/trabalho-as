@@ -13,58 +13,54 @@ public class PropRecebidasRepository {
         ArrayList<ArrayList> lista = new ArrayList();
 
         DatabaseConnection db = new DatabaseConnection();
-        ResultSet result = db.Executor().executeQuery("select" + 
-                                                        " pr.pkcodproposta," +
+        ResultSet result = db.Executor().executeQuery("select"+  
+                                                        " pr.pkcodproposta," + 
                                                         " pr.titulo," +
                                                         " pr.descricao," +
                                                         " case tipo when 0 then 'Serviço' else 'Produto' end as tipo," +
                                                         " us.nome," +
                                                         " case ativo when 0 then 'Proposta aceita' else 'Ativo' end as ativo," +
-                                                        " us.telefone" +                                      
-                                                    " from" +
+                                                        " us.telefone," +
+                                                        " ne.fkcodtbproposta1 as proposta2," +
+                                                        " (select titulo from tbproposta where pkcodproposta = ne.fkcodtbproposta1) as titulo2" +
+                                                      " from" +
                                                         " tbproposta pr" +
-                                                    " inner join" +
+                                                      " inner join" +
                                                         " tbusuario us on pr.fkcodusuario=us.pkcodusuario" +
-                                                    " where" +
-                                                        " pr.pkcodproposta in" +
-                                                            "(select" +
-                                                                " fkcodtbproposta2" +
-                                                            " from" + 
+                                                      " inner join" +
+                                                        " (select " +
+                                                                " fkcodtbproposta2," +
+                                                                " fkcodtbproposta1" +
+                                                            " from" +
                                                                 " tbnegociacao" +
-                                                            " where" +
-                                                                " fkcodtbproposta1 in(" +
-                                                                    "select" + 
+                                                           " where" +
+                                                               " fkcodtbproposta1 in(" +
+                                                                    "select" +
                                                                         " pr.pkcodproposta" +
                                                                     " from" +
                                                                         " tbusuario us" +
                                                                     " inner join" +
                                                                         " tbproposta pr on pr.fkcodusuario=us.pkcodusuario" +
-                                                                    " where"+
-                                                                        " us.id = '" + id + "'))");
-            
-        ResultSet result2 = db.Executor().executeQuery("select" + 
-                                                            " pr.pkcodproposta as proposta2," +
-                                                            " pr.titulo as titulo2" +                                   
-                                                        " from" +
-                                                            " tbproposta pr" +
-                                                        " inner join" +
-                                                            " tbusuario us on pr.fkcodusuario=us.pkcodusuario" +
-                                                        " where" +
-                                                            " pr.pkcodproposta in" +
-                                                                "(select" +
-                                                                    " fkcodtbproposta1" +
-                                                                " from" + 
-                                                                    " tbnegociacao" +
-                                                                " where" +
-                                                                    " fkcodtbproposta1 in(" +
-                                                                        "select" + 
-                                                                            " pr.pkcodproposta" +
-                                                                        " from" +
-                                                                            " tbusuario us" +
-                                                                        " inner join" +
-                                                                            " tbproposta pr on pr.fkcodusuario=us.pkcodusuario" +
-                                                                        " where"+
-                                                                            " us.id = '" + id + "'))");                                                                
+                                                                    " where" +
+                                                                       " us.id = '" + id + "')) ne" +
+                                                        " on pr.pkcodproposta=ne.fkcodtbproposta2" +
+                                                     " where" +
+                                                        " pr.pkcodproposta in" +
+                                                            "(select" +
+                                                                " fkcodtbproposta2" +
+                                                            " from" +
+                                                                " tbnegociacao" +
+                                                            " where" +
+                                                                " fkcodtbproposta1 in( " +
+                                                                    "select" +
+                                                                       " pr.pkcodproposta" +
+                                                                    " from" +
+                                                                        " tbusuario us" +
+                                                                    " inner join" +
+                                                                       " tbproposta pr on pr.fkcodusuario=us.pkcodusuario" +
+                                                                    " where" +
+                                                                       " us.id = '" + id + "'))");
+                                             
         while(result.next()){
 
             ArrayList<String> res = new ArrayList();
@@ -75,10 +71,8 @@ public class PropRecebidasRepository {
             res.add(result.getString("nome"));
             res.add(result.getString("ativo"));
             res.add(result.getString("telefone"));
-
-            result2.next();
-            res.add(result2.getString("proposta2"));
-            res.add(result2.getString("titulo2"));
+            res.add(result.getString("proposta2"));
+            res.add(result.getString("titulo2"));
             lista.add(res);
         }
 
