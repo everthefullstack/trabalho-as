@@ -33,5 +33,23 @@ public class ServiceRepository {
         }
     }
 
-    
+    public void verifyPalavra() throws SQLException, IOException {
+
+        DatabaseConnection db = new DatabaseConnection();
+
+        ResultSet result = db.Executor().executeQuery("SELECT PALAVRA FROM TBPALAVRARESTRITA");
+
+        while(result.next()){
+
+          db.Executor().executeQuery("UPDATE tbproposta" +
+                                      " SET" + 
+                                          " ativo = 0" +
+                                      " WHERE" +
+                                          " ativo = 1" +
+                                      " AND" +
+                                          " titulo" +
+                                      " LIKE" +
+                                        "'%" + result.getString("PALAVRA") + "%'");
+        }
+    }
 }
